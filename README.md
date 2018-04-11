@@ -37,6 +37,7 @@ Once installed, you need to make sure the script is included in the `<head></hea
         <!-- Rest of content -->
     </body>
 </html>
+```
 
 Using the directive is extremely simple. All you need is a "handle" and to mark your div as `expandable`. Simple example with a header:
 
