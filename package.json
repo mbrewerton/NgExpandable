@@ -1,0 +1,19 @@
+{
+  "name": "ngexpandable",
+  "version": "1.0.0",
+  "description": "",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-minify": "^2.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mbrewerton/NgExpandable.git"
+  },
+  "author": "Matt Brewerton",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mbrewerton/NgExpandable/issues"
+  },
+  "homepage": "https://github.com/mbrewerton/NgExpandable#readme"
+}
