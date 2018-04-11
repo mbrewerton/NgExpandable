@@ -1,7 +1,7 @@
 var gulp = require('gulp'),
     minify = require('gulp-minify');
-    src = './',
-    dist = '../dist/';
+    src = './src/',
+    dist = './dist/';
 
 gulp.task('default', function() {
     gulp.src(src + 'ngExpandable.js')
