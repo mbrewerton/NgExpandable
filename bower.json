@@ -1,8 +1,11 @@
 {
   "name": "ngexpandable",
   "description": "An AngularJs module that allows you to create expandable/collapsible elements with ease.",
-  "main": "",
-  "version": "1.0.0",
+  "main": [
+    "dist/ngExpandable.js",
+    "dist/ngExpandable.min.js"
+  ],
+  "version": "1.0.1",
   "authors": [
     "Matt Brewerton"
   ],
@@ -13,7 +16,8 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "src"
   ],
   "dependencies": {
     "angular": "^1.6.9",
