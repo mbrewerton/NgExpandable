@@ -2,8 +2,7 @@
   "name": "ngexpandable",
   "description": "An AngularJs module that allows you to create expandable/collapsible elements with ease.",
   "main": [
-    "dist/ngExpandable.js",
-    "dist/ngExpandable.min.js"
+    "dist/ngExpandable.js"
   ],
   "version": "1.0.1",
   "authors": [
