@@ -1,5 +1,5 @@
 {
-  "name": "ngexpandable",
+  "name": "mbrewerton-ngexpandable",
   "description": "An AngularJs module that allows you to create expandable/collapsible elements with ease.",
   "main": [
     "dist/ngExpandable.js"
