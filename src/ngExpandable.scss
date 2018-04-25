@@ -1,0 +1,46 @@
+$border: 1px solid #252525;
+$border-radius: 5px;
+
+.ng-expandable {
+    border-top: $border;
+    border-left: $border;
+    border-right: $border;
+    border-bottom: $border;
+    border-bottom-left-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+
+    &.collapsed {
+        border: none;
+    }
+
+    .ng-expandable-inner {
+        padding: 10px;
+    }
+}
+
+.ng-expandable-handle {
+    border-top: $border;
+    border-left: $border;
+    border-right: $border;
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    padding: 5px;
+
+    &.collapsed {
+        border-bottom: $border;
+        border-bottom-left-radius: $border-radius;
+        border-bottom-right-radius: $border-radius;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    // &:before {
+    //     content: 'H';
+    //     line-height: 1em;
+    //     cursor: pointer;
+    // }
+}
