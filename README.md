@@ -1,9 +1,8 @@
 # ngExpandable
-`ngExpandable` is a directive for AngularJS that allows you to create expandable/collapsible elements in your AngularJS applications quickly and easily. There are minimal requirements and usage is extremely simple.
+`ngExpandable` is a directive for AngularJS that allows you to create expandable/collapsible elements in your AngularJS applications quickly and easily. There are no requirements outside base Angular and usage is extremely simple.
 
 ## Requirements
 - AngularJS - 1.6.9+ 
-- AngularAnimate - 1.6.9+
 
 ## Installation
 There is a bower package for ngExpandable if you're using bower.
@@ -14,7 +13,7 @@ bower install mbrewerton-ngexpandable
 ```
 
 If not using bower:
-Head to [releases](https://github.com/mbrewerton/NgExpandable/releases) and download the latest version. If using this method you will also need to make sure you have the appropriate version of AngularJS and AngularAnimate installed.
+Head to [releases](https://github.com/mbrewerton/NgExpandable/releases) and download the latest version. If using this method you will also need to make sure you have the appropriate version of AngularJS installed.
 
 ## Usage
 Once installed, you need to make sure the script is included in the `<head></head>` tag and that it's added as a dependency in your AngularJS app:
@@ -22,12 +21,10 @@ Once installed, you need to make sure the script is included in the `<head></hea
 <html>
     <head>
         <script src="path/to/angular/angular.min.js"></script>
-        <script src="path/to/angular-animate/angular-animate.min.js"></script>
         <script src="path/to/mbrewerton-gexpandable/ngExpandable.min.js"></script>
 
         <script>
             angular.module('myApp', [
-                'ngAnimate',
                 'mbrewerton.ngExpandable'
             ]);
         </script>
@@ -82,7 +79,6 @@ It's also possible to use the expandable element and handle inside an `ng-repeat
 There are features planned for the future roadmap, not limited to the following list:
 - Add option to display expand/collapse icon with choices, eg: Chevron, Plus/Minus etc.
 - Add default styling to expandable elements/headers
-- Allow for animations without `ngAnimate` 
 
 ## Boring License Stuff
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
