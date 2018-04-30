@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../../dist/ngExpandable.min.css">
+
+    <script src="../../bower_components/angular/angular.min.js"></script>
+    <script src="../../bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="../../dist/ngExpandable.js"></script>
+
+    <script>
+        var app = angular.module('app', [
+            'ngAnimate',
+            'mbrewerton.ngExpandable'
+        ]);
+
+        app.controller('cont', ['$scope', function($scope) {
+            $scope.stuff = [];
+            var i = 0;
+
+            $scope.addStuff = function() {
+                $scope.stuff.push('New Thing' + i);
+                i++;
+            }
+        }])
+    </script>
+</head>
+<body ng-app="app" ng-controller="cont">
+    <div id="handle">Click</div>
+    <div expandable handle="handle" handle-type="adasd">
+        <div>First stuff</div>
+        <div ng-repeat="s in stuff">
+            {{s}}
+        </div>
+    </div>
+</body>
+</html>
