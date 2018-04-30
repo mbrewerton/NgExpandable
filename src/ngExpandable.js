@@ -8,9 +8,15 @@ angular
                     var el = $element[0];
                         el.style.overflow = 'hidden';
                     var _maxHeight = el.scrollHeight,
-                        _expanded = true,
+                        _expanded = angular.isDefined($scope.open) ? $scope.open : true,
                         _handleElement = document.getElementById($scope.handle),
-                        _speed = $scope.speed || 0.5;
+                        _speed = $scope.speed || 0.5,
+                        _startedOpen = _expanded,
+                        _runOnce = true;
+
+                    if (!_expanded) {
+                        el.style.display = 'none';
+                    }
 
                     var getTransition = function (easing) {
                         return (_speed || 0.5) + 's height ' + (easing || 'ease-in-out');
@@ -34,6 +40,10 @@ angular
                     el.style.transition = getTransition($scope.easing);
 
                     var expandFunction = function () {
+                        if (!_startedOpen && _runOnce) {
+                            el.style.display = 'block';
+                            _runOnce = false;
+                        }
                         _expanded = !_expanded;
                         setHeight();
                     }
@@ -56,7 +66,8 @@ angular
         scope: {
             handle: '@',
             speed: '=?',
-            easing: '@?'
+            easing: '@?',
+            open: '=?'
         },
     }
 });
