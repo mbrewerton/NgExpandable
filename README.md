@@ -1,6 +1,8 @@
 # ngExpandable
 `ngExpandable` is a directive for AngularJS that allows you to create expandable/collapsible elements in your AngularJS applications quickly and easily. There are minimal requirements and usage is extremely simple.
 
+Current Stable Version: 1.2.0
+
 ## Requirements
 - AngularJS - 1.6.9+ 
 - AngularAnimate - 1.6.9+
@@ -15,6 +17,9 @@ bower install mbrewerton-ngexpandable
 
 If not using bower:
 Head to [releases](https://github.com/mbrewerton/NgExpandable/releases) and download the latest version. If using this method you will also need to make sure you have the appropriate version of AngularJS and AngularAnimate installed.
+
+## New in this Release
+- [Feature] Added the ability toggle the expandable element without the need for a `handle` element.
 
 ## Usage
 Once installed, you need to make sure the script is included in the `<head></head>` tag and that it's added as a dependency in your AngularJS app:
@@ -44,6 +49,34 @@ Using the directive is extremely simple. All you need is a "handle" and to mark 
 ```html
 <div id="myHandle">My Header</div>
 <div expandable handle="myHandle">
+    <h2>A header in the div</h2>
+    <div>
+        Some more content in here
+    </div>
+</div>
+```
+
+**NEW**: You can now use the directive without a `handle` by using the `open` property. Example:
+```js
+var app = angular.module('demo', [
+    'mbrewerton.ngExpandable'
+]);
+
+(function(){            
+    angular.module('demo')
+            .controller('controller', ControllerCtrl)
+    function ControllerCtrl($scope){
+        $scope.showContent = false;
+        
+        $scope.toggle = function() {
+            $scope.showContent = !$scope.showContent;
+        }
+    }            
+}());
+```
+```html
+<button ng-click="toggle()">Toggle Div</div>
+<div expandable open="showContent">
     <h2>A header in the div</h2>
     <div>
         Some more content in here
