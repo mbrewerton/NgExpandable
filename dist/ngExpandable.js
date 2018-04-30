@@ -100,12 +100,19 @@ angular
                             console.error('[Error(mbrewerton.ngExpandable)] - ' + err)
                         }
 
-                        if (_handleElement) {
+                        if (_handleElement[0]) {
                             // Apply the click event to our handle only
                             _handleElement[0].addEventListener('click', ExpandFunction);
-                        } else {
-                            // apply the expand to our element itself
-                            el.addEventListener('click', ExpandFunction);
+                        } else if (angular.isDefined($scope.open)) { 
+                            $scope.$watch('open', 
+                                function (oldValue, newValue) { 
+                                    if (oldValue != newValue) { 
+                                        expandFunction(); 
+                                    } 
+                                }); 
+                        } else { 
+                            // apply the expand to our element itself 
+                            el.addEventListener('click', ExpandFunction); 
                         }
 
                         SetClasses();
