@@ -26,7 +26,6 @@ angular
                         _maxHeight = el.scrollHeight;
                         if (_expanded) {
                             el.style.height = _maxHeight + 'px';
-                            console.log(_speed);
                             $timeout(function() {
                                 el.style.height = 'auto';
                             }, _speed * 1000);
@@ -51,6 +50,13 @@ angular
                     if (_handleElement) {
                         // Apply the click event to our handle only
                         _handleElement.addEventListener('click', expandFunction);
+                    } else if (angular.isDefined($scope.open)) {
+                        $scope.$watch('open',
+                            function (oldValue, newValue) {
+                                if (oldValue != newValue) {
+                                    expandFunction();
+                                }
+                            });
                     } else {
                         // apply the expand to our element itself
                         el.addEventListener('click', expandFunction);

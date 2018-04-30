@@ -1,7 +1,7 @@
 # ngExpandable
 `ngExpandable` is a directive for AngularJS that allows you to create expandable/collapsible elements in your AngularJS applications quickly and easily. There are minimal requirements and usage is extremely simple.
 
-Current Stable Version: 1.2.0
+Current Stable Version: 1.2.1
 
 ## Requirements
 - AngularJS - 1.6.9+ 
@@ -20,6 +20,7 @@ Head to [releases](https://github.com/mbrewerton/NgExpandable/releases) and down
 
 ## New in this Release
 - [Feature] Added the ability toggle the expandable element without the need for a `handle` element.
+- [Bug] Fixed Open parameter not being watched properly.
 
 ## Usage
 Once installed, you need to make sure the script is included in the `<head></head>` tag and that it's added as a dependency in your AngularJS app:
