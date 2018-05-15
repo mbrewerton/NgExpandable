@@ -4,7 +4,7 @@
   "main": [
     "dist/ngExpandable.js"
   ],
-  "version": "1.2.3",
+  "version": "1.2.4",
   "authors": [
     "Matt Brewerton"
   ],
@@ -20,6 +20,5 @@
   ],
   "dependencies": {
     "angular": "^1.6.9",
-    "angular-animate": "^1.6.9"
   }
 }
