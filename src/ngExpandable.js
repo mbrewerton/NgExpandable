@@ -1,5 +1,5 @@
 angular
-    .module('mbrewerton.ngExpandable', ['ngAnimate'])
+    .module('mbrewerton.ngExpandable', [])
     .directive('expandable', function () {
         var directiveController =
             ['$scope', '$element', '$attrs', '$timeout',
