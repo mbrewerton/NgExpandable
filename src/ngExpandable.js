@@ -17,7 +17,7 @@ angular
                             }
                         },
                             _computedStyle = window.getComputedStyle(el, null),
-                            _expanded = true,
+                            _expanded = angular.isDefined($scope.open) ? $scope.open : true,
                             _maxHeight = parseFloat(el.scrollHeight),
                             _handleElement = angular.element(document.getElementById($scope.handle)),
                             _handleTypes = {
@@ -30,29 +30,22 @@ angular
                             _speed = $scope.speed || 0.5,
                             _postAnimationTimeout;
 
+                        /**
+                         * @return {number}
+                         */
                         var ComputeHeight = function () {
-                            return _maxHeight
-                        }
+                            return _maxHeight;
+                        };
                         if (!_expanded) {
                             el.style.display = 'none';
                         }
 
+                        /**
+                         * @return {string}
+                         */
                         var GetTransition = function (easing) {
                             return (_speed || 0.5) + 's height ' + (easing || 'ease-in-out');
-                        }
-
-                        var SetHeight = function () {
-                            _maxHeight = el.scrollHeight;
-                            if (_expanded) {
-                                el.style.height = _maxHeight + 'px';
-                                $timeout(function () {
-                                    el.style.height = 'auto';
-                                    var GetTransition = function (easing) {
-                                        return (_speed || 0.5) + 's height ' + (easing || 'ease-in-out');
-                                    }
-                                });
-                            }
-                        }
+                        };
 
                         var SetClasses = function () {
                             $element.addClass(_classes.base);
@@ -69,7 +62,7 @@ angular
                                     LogError('Unknown handle type specified.\nExpected one of: ' + Object.keys(_handleTypes).map(function (k) { return _handleTypes[k] }).join(", ") + '. \nGot \"' + _handleType + '\"');
                                     break;
                             }
-                        }
+                        };
 
                         var SetCollapseClass = function (isCollapsed) {
                             if (isCollapsed) {
@@ -79,7 +72,7 @@ angular
                                 $element.removeClass(_classes.collapsed);
                                 _handleElement.removeClass(_classes.collapsed);
                             }
-                        }
+                        };
 
                         var SetHeight = function () {
                             $timeout.cancel(_postAnimationTimeout);
@@ -100,26 +93,26 @@ angular
                                     });
                                 });
                             }
-                        }
+                        };
                         el.style.transition = GetTransition($scope.easing);
 
                         var PostAnimation = function (func) {
                             _postAnimationTimeout = $timeout(function () {
                                 func();
                             }, _speed * 1000);
-                        }
+                        };
 
                         var ExpandFunction = function () {
-                            if (!_startedOpen && _runOnce) {
+                            if (!_startedOpen && !_runOnce) {
                                 el.style.display = 'block';
-                                _runOnce = false;
+                                _runOnce = true;
                             }
                             _expanded = !_expanded;
                             SetHeight();
-                        }
+                        };
                         var LogError = function (err, lineNumber) {
                             console.error('[Error(mbrewerton.ngExpandable)] - ' + err)
-                        }
+                        };
 
                         if (_handleElement[0]) {
                             // Apply the click event to our handle only
@@ -127,7 +120,7 @@ angular
                         } else if (angular.isDefined($scope.open)) {
                             $scope.$watch('open',
                                 function (oldValue, newValue) {
-                                    if (oldValue != newValue) {
+                                    if (oldValue !== newValue) {
                                         ExpandFunction();
                                     }
                                 });
@@ -149,6 +142,6 @@ angular
                 speed: '=?',
                 easing: '@?',
                 open: '=?'
-            },
+            }
         }
     });
