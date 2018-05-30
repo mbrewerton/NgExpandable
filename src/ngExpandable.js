@@ -4,19 +4,19 @@ angular
         var directiveController =
             ['$scope', '$element', '$attrs', '$timeout',
                 function directiveController($scope, $element, $attrs, $timeout) {
+                    $element[0].style.display = 'none';
                     $timeout(function () {
                         var el = $element[0];
                         el.style.overflow = 'hidden';
                         var _classes = {
-                            base: 'ng-expandable',
-                            collapsed: 'collapsed',
-                            handle: {
-                                base: 'ng-expandable-handle',
-                                icon: 'ng-expandable-handle-icon',
-                                header: 'ng-expandable-handle-header'
-                            }
-                        },
-                            _computedStyle = window.getComputedStyle(el, null),
+                                base: 'ng-expandable',
+                                collapsed: 'collapsed',
+                                handle: {
+                                    base: 'ng-expandable-handle',
+                                    icon: 'ng-expandable-handle-icon',
+                                    header: 'ng-expandable-handle-header'
+                                }
+                            },
                             _expanded = angular.isDefined($scope.open) ? $scope.open : true,
                             _maxHeight = parseFloat(el.scrollHeight),
                             _handleElement = angular.element(document.getElementById($scope.handle)),
@@ -25,10 +25,13 @@ angular
                                 header: 'header'
                             },
                             _handleType = $scope.handleType || _handleTypes.header,
-                            _runOnce = false,
                             _startedOpen = angular.isDefined($scope.open) ? $scope.open : true,
                             _speed = $scope.speed || 0.5,
                             _postAnimationTimeout;
+
+                        if (_startedOpen) {
+                            el.style.display = 'block';
+                        }
 
                         /**
                          * @return {number}
@@ -36,9 +39,6 @@ angular
                         var ComputeHeight = function () {
                             return _maxHeight;
                         };
-                        if (!_expanded) {
-                            el.style.display = 'none';
-                        }
 
                         /**
                          * @return {string}
@@ -59,7 +59,9 @@ angular
                                     _handleElement.addClass(_classes.handle.icon);
                                     break;
                                 default:
-                                    LogError('Unknown handle type specified.\nExpected one of: ' + Object.keys(_handleTypes).map(function (k) { return _handleTypes[k] }).join(", ") + '. \nGot \"' + _handleType + '\"');
+                                    LogError('Unknown handle type specified.\nExpected one of: ' + Object.keys(_handleTypes).map(function (k) {
+                                        return _handleTypes[k]
+                                    }).join(", ") + '. \nGot \"' + _handleType + '\"');
                                     break;
                             }
                         };
@@ -103,14 +105,13 @@ angular
                         };
 
                         var ExpandFunction = function () {
-                            if (!_startedOpen && !_runOnce) {
+                            if (el.style.display === 'none') {
                                 el.style.display = 'block';
-                                _runOnce = true;
                             }
                             _expanded = !_expanded;
                             SetHeight();
                         };
-                        var LogError = function (err, lineNumber) {
+                        var LogError = function (err) {
                             console.error('[Error(mbrewerton.ngExpandable)] - ' + err)
                         };
 
