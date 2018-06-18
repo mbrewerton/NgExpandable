@@ -17,7 +17,8 @@ angular
                                     header: 'ng-expandable-handle-header'
                                 }
                             },
-                            _expanded = angular.isDefined($scope.open) ? $scope.open : true,
+                            _openIsDefined = angular.isDefined($scope.open),
+                            _expanded = _openIsDefined ? $scope.open : true,
                             _maxHeight = parseFloat(el.scrollHeight),
                             _handleElement = angular.element(document.getElementById($scope.handle)),
                             _handleTypes = {
@@ -105,19 +106,24 @@ angular
                         };
 
                         var ExpandFunction = function () {
-                            if (el.style.display === 'none') {
+                            if (el.style.display == 'none') {
                                 el.style.display = 'block';
                             }
                             _expanded = !_expanded;
+                            if (_openIsDefined) {
+                                $scope.open = _expanded;
+                            }
+
                             SetHeight();
                         };
-                        var LogError = function (err) {
+                        var LogError = function (err, lineNumber) {
                             console.error('[Error(mbrewerton.ngExpandable)] - ' + err)
                         };
 
                         if (_handleElement[0]) {
                             // Apply the click event to our handle only
                             _handleElement[0].addEventListener('click', ExpandFunction);
+                            _handleElement[0].style.cursor = 'pointer';
                         } else if (angular.isDefined($scope.open)) {
                             $scope.$watch('open',
                                 function (oldValue, newValue) {

@@ -1,7 +1,7 @@
 # ngExpandable
 `ngExpandable` is a directive for AngularJS that allows you to create expandable/collapsible elements in your AngularJS applications quickly and easily. There are minimal requirements and usage is extremely simple.
 
-Current Stable Version: 1.2.5
+Current Stable Version: 1.2.6
 
 ## Requirements
 - AngularJS - 1.6.9+
@@ -18,8 +18,11 @@ If not using bower:
 Head to [releases](https://github.com/mbrewerton/NgExpandable/releases) and download the latest version. If using this method you will also need to make sure you have the appropriate version of AngularJS and AngularAnimate installed.
 
 ## New in this Release
-- [Bug] Fixed expandable elements flickering on page load.
+- [Bug] Fix `open` property not listening correctly.
+- [Feature] Add default `cursor: pointer;` style to the handle element.
+
 ## Previous Releases
+- [Bug] Fixed expandable elements flickering on page load.
 - [Chore] Removed unnecessary dependency on ngAnimate.
 - [Bug] Fixed expandable objects not working as expected using the `open` tag and starting closed.
 - [Feature] Added smooth animations on expanding/collapsing.
